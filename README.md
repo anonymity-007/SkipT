@@ -6,14 +6,13 @@ Offical implementation of the paper "Skip Tuning: Pre-trained Vision-Language Mo
 
 # News
 
-- (Nov. 14, 2024) Training and evaluation codes for SkipTuning are released.
+- (Nov. 15, 2024) Training and evaluation codes for SkipTuning are released.
 
 ----
 
 # Highlights
 
-> **Abstract** Prompt Tuning (PT) aims to transfer large pre-trained vision-language models (VLMs) to downstream tasks by learning a tiny set of context vectors. 
-> Despite significant progress,  we reveal in this work that freezing the parameters of VLMs during learning the context vectors neither facilitates the transferability of pre-trained knowledge nor improves the memory and time efficiency considerably. Upon further investigation, we find that reducing both the length and width of the feature-gradient propagation flows in the full fine-tuning (FT) baseline is key to achieving effective and efficient knowledge transfer.  Motivated by this, we propose Skip Tuning, a novel paradigm for adapting VLMs to downstream tasks without relying extra context vectors or adapter modules. Concretely, Skip Tuning performs Layer-wise Skipping (LSkip) and Class-wise Skipping (CSkip) to reduce both memory usage and time cost while maintaining FT performance. Extensive experiments on a wide spectrum of benchmarks demonstrate the effectiveness and efficiency of Skip Tuning, e.g., on the few-shot learning benchmark, our Skip Tuning achieves $\underline{\times \textbf{15}}$ time efficiency, $\underline{\times \textbf{6.4}}$ memory efficiency, while yielding a $\underline{\textbf{1.04}}\%$ ACC improvement over the previous SOTA.
+> **Abstract** Prompt tuning (PT) has long been recognized as an effective and efficient paradigm for transferring large pre-trained vision-language models (VLMs) to downstream tasks by learning a tiny set of context vectors. Nevertheless, in this work, we reveal that freezing the parameters of VLMs during learning the context vectors neither facilitates the transferability of pre-trained knowledge nor improves the memory and time efficiency significantly. Upon further investigation, we find that reducing both the length and width of the feature-gradient propagation flows of the full fine-tuning (FT) baseline is key to achieving effective and efficient knowledge transfer. Motivated by this, we propose Skip Tuning, a novel paradigm for adapting VLMs to downstream tasks. Unlike existing PT or adapter-based methods, Skip Tuning applies Layer-wise Skipping (LSkip) and Class-wise Skipping (CSkip) upon the FT baseline without introducing extra context vectors or adapter modules. Extensive experiments across a wide spectrum of benchmarks demonstrate the superior effectiveness and efficiency of our Skip Tuning over both PT and adapter-based methods.
 
 ![Framework](examples/framework.png)
 
@@ -25,29 +24,29 @@ Offical implementation of the paper "Skip Tuning: Pre-trained Vision-Language Mo
 > 
 > 2. We devise Skip Tuning, an effective and efficient method for transferring VLMs to downstream tasks without relying on extra context vectors or adapter modules.
 > 
-> 3. We evaluate our method on a wide spectrum of benchmarks, demonstrating the superiority of Skip Tuning over prompt tuning and adapter tuning approaches.
+> 3. We evaluate our method on a wide spectrum of benchmarks, demonstrating the superiority of Skip Tuning over both prompt tuning and adapter-based approaches.
 
 ----
 
 # Efficiency and Effectiveness
 
-Our SkipTuning is orthogonal to both prompt tuning and adapter tuning approaches, therefore can be used as a plugin to improve all of them.
+Our Skip Tuning achieves the best time, memory efficiency and performance in different tasks
 
-<img src="examples/performance.png" width="50%" />
+![Overall Performance](examples/performance.png)
 
-**Base-to-New Generalization Performance**
+**Base-to-New Generalization**
 
 ![Base-to-New Generalization](examples/base_to_new.png)
 
-**Cross-Dataset Generalization Performance**
+**Cross-Dataset Generalization**
 
 ![Cross-Dataset Generalization](examples/cross_dataset.png)
 
-**Domain Generalization Performance**
+**Domain Generalization**
 
 ![Domain Generalization](examples/domain_generalization.png)
 
-**Few-shot Learning Performance**
+**Few-shot Learning**
 
 ![Few-shot Learning](examples/few_shot.png)
 
@@ -62,7 +61,7 @@ Setup conda environment (recommended).
 **Create a conda environment**
 
 ```
-conda create -y -n skip python=3.8
+conda create -y -n skipt python=3.8
 conda activate skip
 ```
 
