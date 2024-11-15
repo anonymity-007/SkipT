@@ -32,7 +32,7 @@ Offical implementation of the paper "Skip Tuning: Pre-trained Vision-Language Mo
 
 Our Skip Tuning achieves the best time, memory efficiency and performance in different tasks
 
-![Overall Performance](examples/performance.png)
+<img src="examples/performance.png" width=50% />
 
 **Base-to-New Generalization**
 
